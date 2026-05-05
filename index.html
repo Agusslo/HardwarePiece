@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARDWARE PIECE | Elite PC Tuning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">HARDWARE<span class="highlight">PIECE</span></div>
+        <ul class="nav-links">
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a href="#planes">Planes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <button class="btn btn-reservar" onclick="openModal()">RESERVAR TURNO</button>
+    </nav>
+
+    <!-- HERO CON ANIMACIÓN 3D -->
+    <header class="hero reveal active">
+        <!-- Efectos de fondo futuristas -->
+        <div class="cyber-grid"></div>
+        <div class="grid-glow"></div>
+
+        <!-- Contenido principal -->
+        <div class="hero-content">
+            <h1>El Hardware no<br>es tu límite. <br><span class="highlight">La Configuración Sí.</span></h1>
+            <p>Llevamos tu PC al techo absoluto de su capacidad. Erradicamos el input lag desde la raíz del sistema, logrando una sincronización 1:1 entre tus reflejos y el monitor. Reescribimos las reglas del rendimiento competitivo.</p>
+            <div>
+                <button class="btn" onclick="openModal()">Reservar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRES PASOS -->
+    <section id="proceso" class="steps reveal">
+        <div class="steps-header">
+            <div class="subtitle mono">// CÓMO FUNCIONA</div>
+            <h2>TRES PASOS.<br>ESO ES TODO.</h2>
+            <p>Sin complicaciones. Sin esperas eternas. Así funciona una sesión de optimización remota.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num mono">01</div>
+                <h3>ELEGÍ TU PLAN</h3>
+                <p>Seleccioná el nivel de tuning que tu PC necesita. Recibís instrucciones de preparación y soporte inmediato antes de comenzar.</p>
+                <div class="tags mono">
+                    <span>MISMO DÍA</span> <span>CONFIRMACIÓN RÁPIDA</span>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-num mono">02</div>
+                <h3>NOSOTROS OPERAMOS</h3>
+                <p>Un técnico especializado ajusta tu BIOS, Windows, red y juego en tiempo real. Mirá la magia en vivo desde tu silla.</p>
+                <div class="tags mono">
+                    <span>CONEXIÓN ANYDESK</span> <span>15-40 MIN</span>
+                </div>
+            </div>
+            <div class="step-card border-glow-pink">
+                <div class="step-num mono highlight">03</div>
+                <h3>SENTÍ LA DIFERENCIA</h3>
+                <p>Tu PC finalmente rinde como debería. 1% Lows estables, registro de balas perfecto y un mouse que se siente ligero como una pluma.</p>
+                <div class="tags mono">
+                    <span>FPS ESTABLES</span> <span>ZERO INPUT DELAY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS / STATS -->
+    <section id="resultados" class="stats reveal">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">+25%</div>
+                <div class="mono" style="font-size: 0.9rem; color: #888;">BOOST BASE (OS TWEAKS)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">-40%</div>
+                <div class="mono" style="font-size: 0.9rem; color: #888;">REDUCCIÓN DE LATENCIA</div>
+            </div>
+            <div class="stat-box" style="border-color: var(--pink-neon);">
+                <div class="stat-number" style="font-size: 4rem;">+72%</div>
+                <div class="mono" style="font-size: 0.9rem; font-weight: bold; color: #fff;">MAX FPS TOTALES</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" class="pricing reveal">
+        <div class="pricing-header">
+            <div class="subtitle mono">// PLANES</div>
+            <h2>ES HORA DE TOMAR <br><span class="highlight">EL CONTROL</span></h2>
+        </div>
+        
+        <div class="cards-container">
+            <!-- ESSENTIAL -->
+            <div class="card reveal">
+                <h3>ESSENTIAL</h3>
+                <div class="price">$45.000 <span class="currency">ARS</span></div>
+                <div class="session-time mono">SESIÓN: 15-25 MIN</div>
+                <p style="color: #888; font-size: 0.9rem;">El punto de partida. Un sistema ultra-liviano, libre de telemetría y con respuesta de red inmediata para shooters.</p>
+                <ul class="features">
+                    <li>Optimización Windows</li>
+                    <li>Red & Eliminación de Bloatware</li>
+                    <li>Configuración in-game</li>
+                    <li>Optimización Input Básico</li>
+                </ul>
+                <button class="btn w-100" style="margin-top:20px; width:100%; border-color:#555; color:#aaa;" onclick="openModal('Essential')">SELECCIONAR ESSENTIAL</button>
+            </div>
+
+            <!-- PERFORMANCE -->
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>PERFORMANCE</h3>
+                <div class="price">$65.000 <span class="currency">ARS</span></div>
+                <div class="session-time mono">SESIÓN: 20-30 MIN</div>
+                <p style="color: #888; font-size: 0.9rem;">Para el jugador competitivo. Estabilizamos los FPS interviniendo frecuencias y limpiando a fondo los drivers.</p>
+                <ul class="features">
+                    <li>Todo el nivel Essential</li>
+                    <li>BIOS & Configuraciones Ocultas</li>
+                    <li>Overclock Seguro CPU/GPU</li>
+                    <li>Tweak Shader Cache & Monitor</li>
+                </ul>
+                <button class="btn w-100" style="margin-top:20px; width:100%; border-color:#fff;" onclick="openModal('Performance')">SELECCIONAR PRO</button>
+            </div>
+
+            <!-- ELITE -->
+            <div class="card elite reveal" style="transition-delay: 0.2s;">
+                <h3>ELITE</h3>
+                <div class="price">$85.000 <span class="currency">ARS</span></div>
+                <div class="session-time mono">SESIÓN: 25-40 MIN</div>
+                <p style="color: #888; font-size: 0.9rem;">Configuración quirúrgica. Reestructuramos la comunicación del silicio con la memoria RAM. El techo absoluto.</p>
+                <ul class="features">
+                    <li>Todo el nivel Performance</li>
+                    <li>Prioridad de Nivel KERNEL</li>
+                    <li>Desfragmentación IRQ / Latencia</li>
+                    <li>RAM Timings Manuales (Max FPS)</li>
+                </ul>
+                <button class="btn w-100" style="margin-top:20px; width:100%;" onclick="openModal('Elite')">SELECCIONAR ELITE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section reveal">
+        <div class="faq-container">
+            <div class="faq-left">
+                <div class="subtitle mono">// PREGUNTAS</div>
+                <h2>PREGUNTAS<br><span class="highlight">FRECUENTES</span></h2>
+                <p>Todo lo que necesitás saber respondido en detalle.</p>
+                
+                <button class="btn btn-wa-faq" onclick="openModal()">HABLAR POR WHATSAPP</button>
+                <a href="#planes" class="link-planes mono">VER PLANES →</a>
+            </div>
+            
+            <div class="faq-right">
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué hace realmente una optimización? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Intervenimos a nivel software y BIOS para eliminar cuellos de botella. Desactivamos servicios inútiles, ajustamos latencias de red y configuramos la comunicación directa entre CPU, GPU y RAM.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Es seguro para mi PC? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>100% seguro. Siempre creamos un punto de restauración antes de empezar. Todos los ajustes de frecuencias y voltajes se hacen dentro de los márgenes seguros del fabricante.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Se pueden perder archivos durante la sesión? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>No. Solo purgamos archivos temporales, cachés y registros del sistema. Tus juegos, documentos y configuraciones personales quedan intactos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué mejora voy a notar? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Mayor estabilidad de FPS (eliminando los tirones repentinos), reducción drástica del input lag (tu mouse se sentirá 1:1) y un sistema operativo mucho más ágil.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué pasa si no noto mejora? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Si adquiriste el plan Elite, tenés nuestra Garantía de Mejora Documentada. Comparamos los benchmarks antes y después; si no hay cambio medible, te devolvemos el dinero.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cuánto dura la sesión? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Dependiendo del plan elegido, entre 15 y 40 minutos. Operamos nosotros de forma remota mientras vos podés mirar cómo lo hacemos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo coordino el turno? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Usá el botón de "Reservar Turno" en esta web, elegís el horario y plan, nos llega un mensaje automático a WhatsApp y te confirmamos en el acto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE RESERVA -->
+    <div id="modalReserva" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>RESERVAR TURNO</h2>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            
+            <div class="status-indicator mono">
+                <span class="dot"></span> DISPONIBLES AHORA
+            </div>
+
+            <form id="formReserva" class="form-grid">
+                <div class="input-group">
+                    <label class="mono">// NOMBRE</label>
+                    <input type="text" id="waNombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="input-group">
+                    <label class="mono">// PLAN</label>
+                    <select id="waPlan">
+                        <option value="No especificado">Elegí tu plan</option>
+                        <option value="Essential ($45.000)">Essential ($45.000)</option>
+                        <option value="Performance ($65.000)">Performance ($65.000)</option>
+                        <option value="Elite ($85.000)">Elite ($85.000)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="mono">// HORARIO DE SESIÓN</label>
+                    <input type="time" id="waHorario" required>
+                </div>
+                <div class="input-group">
+                    <label class="mono">// MEDIO DE PAGO</label>
+                    <select id="waPago">
+                        <option value="Transferencia">Transferencia / Alias</option>
+                        <option value="MercadoPago">MercadoPago</option>
+                        <option value="Cripto">USDT / Cripto</option>
+                    </select>
+                </div>
+                <div class="input-group full-width">
+                    <label class="mono">// SPECS DE TU PC (OPCIONAL)</label>
+                    <textarea id="waSpecs" rows="3" placeholder="Ej: Ryzen 7 5700X3D, RTX 4070, juego Valorant..."></textarea>
+                </div>
+                
+                <button type="button" class="btn btn-wa full-width" onclick="enviarWhatsApp()">
+                    RESERVAR VÍA WHATSAPP →
+                </button>
+            </form>
+            <div class="modal-footer mono">TE RESPONDEMOS EN MENOS DE 2HS · 100% REMOTO</div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

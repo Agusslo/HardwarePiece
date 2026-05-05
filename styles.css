@@ -1,0 +1,725 @@
+/* ================= CUSTOM SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+  border-left: 1px solid #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff2a6d;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+  box-shadow: 0 0 10px #ff2a6d;
+}
+
+/* ================= VARIABLES ================= */
+:root {
+  --bg-dark: #050505;
+  --bg-card: #0f0f0f;
+  --border-color: #222;
+  --text-main: #f0f0f0;
+  --text-muted: #888;
+  --pink-neon: #ff2a6d;
+  --pink-glow: rgba(255, 42, 109, 0.4);
+  --pink-glow-strong: rgba(255, 42, 109, 0.8);
+  --green-status: #00ff88;
+}
+
+/* ================= RESET & BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: var(--pink-neon);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 120px;
+}
+
+/* ================= UTILIDADES ================= 
+.highlight {
+  color: var(--pink-neon);
+  text-shadow: 0 0 10px var(--pink-glow);
+}*/
+
+.mono {
+  font-family: "Roboto Mono", monospace;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(5, 5, 5, 0.9);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: var(--pink-neon);
+}
+
+.btn,
+.btn-reservar {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  background: transparent;
+  border: 2px solid var(--pink-neon);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 15px var(--pink-glow);
+  will-change: transform, box-shadow;
+}
+
+.btn-reservar {
+  background: var(--pink-neon);
+  padding: 10px 20px;
+  font-size: 0.8rem;
+}
+
+.btn:hover,
+.btn-reservar:hover {
+  background: var(--pink-neon);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ================= HERO SECTION & ANIMACIÓN 3D ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+/* Efectos Cyberpunk del Hero */
+.grid-glow {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 42, 109, 0.15) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.cyber-grid {
+  position: absolute;
+  bottom: -40%;
+  left: -50%;
+  width: 200%;
+  height: 150%;
+  background-image:
+    linear-gradient(rgba(255, 42, 109, 0.24) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 42, 109, 0.24) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(600px) rotateX(75deg) translateY(0);
+  animation: gridTranslate 12s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  will-change: transform;
+}
+
+@keyframes gridTranslate {
+  0% {
+    transform: perspective(600px) rotateX(75deg) translateY(0);
+  }
+  100% {
+    transform: perspective(600px) rotateX(75deg) translateY(40px);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.45;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.02) translate(-15px, 15px);
+  }
+}
+
+/* ================= TRES PASOS ================= */
+.steps {
+  padding: 80px 10%;
+}
+.subtitle {
+  color: var(--pink-neon);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--border-color);
+}
+.step-card {
+  padding: 40px;
+  border-right: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+.step-card:last-child {
+  border-right: none;
+}
+.step-num {
+  font-size: 4rem;
+  color: #222;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.tags {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tags span {
+  border: 1px solid var(--border-color);
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ================= STATS SECTION ================= */
+.stats {
+  padding: 40px 10% 80px 10%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 40px 30px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  will-change: transform, border-color;
+}
+
+.stat-box:hover {
+  border-color: var(--pink-neon);
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--pink-neon);
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px var(--pink-glow);
+}
+
+/* ================= PRICING SECTION ================= */
+.pricing {
+  padding: 80px 10%;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-header h2 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 50px 30px;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  will-change: transform, box-shadow, border-color;
+}
+
+.card:hover {
+  border-color: var(--pink-neon);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.card.elite {
+  border-color: var(--pink-neon);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 42, 109, 0.05) 0%,
+    var(--bg-card) 100%
+  );
+}
+
+.card.elite::before {
+  content: "MÁXIMO PODER";
+  position: absolute;
+  top: 40px;
+  right: -35px;
+  background: var(--pink-neon);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 5px 40px;
+  transform: rotate(45deg);
+  letter-spacing: 2px;
+}
+
+.card h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.currency {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.session-time {
+  font-size: 0.8rem;
+  color: var(--pink-neon);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.features {
+  list-style: none;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+.features li {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+}
+
+.features li::before {
+  content: ">";
+  color: var(--pink-neon);
+  font-weight: bold;
+  margin-right: 10px;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* ================= FAQ SECTION ================= */
+.faq-section {
+  padding: 80px 10%;
+  background-color: var(--bg-dark);
+}
+
+.faq-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+}
+
+.faq-left h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.faq-left p {
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.btn-wa-faq {
+  background-color: var(--pink-neon);
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 18px 0;
+  margin-bottom: 15px;
+}
+.btn-wa-faq:hover {
+  background-color: #fff;
+  color: var(--pink-neon);
+}
+
+.link-planes {
+  display: block;
+  text-align: center;
+  color: var(--text-main);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 15px 0;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+.link-planes:hover {
+  border-color: var(--pink-neon);
+  color: var(--pink-neon);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.faq-question:hover {
+  color: var(--pink-neon);
+}
+
+.faq-question .icon {
+  font-weight: normal;
+  font-family: "Roboto Mono", monospace;
+  border: 1px solid var(--border-color);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.faq-question.active {
+  color: var(--pink-neon);
+}
+
+.faq-question.active .icon {
+  transform: rotate(45deg);
+  border-color: var(--pink-neon);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+  color: var(--text-muted);
+  padding-bottom: 25px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ================= MODAL DE RESERVA ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  width: 90%;
+  max-width: 650px;
+  padding: 40px;
+  transform: translateY(-50px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  will-change: transform;
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+.close-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.close-btn:hover {
+  color: var(--pink-neon);
+  border-color: var(--pink-neon);
+}
+
+.status-indicator {
+  font-size: 0.8rem;
+  color: var(--green-status);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green-status);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--green-status);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.full-width {
+  grid-column: 1 / -1;
+}
+.input-group label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 12px;
+  font-family: "Montserrat", sans-serif;
+  transition: border 0.3s;
+}
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--pink-neon);
+  box-shadow: 0 0 10px rgba(255, 42, 109, 0.1);
+}
+
+/* Reloj de tiempo */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.btn-wa {
+  background: var(--pink-neon);
+  border: none;
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+}
+.btn-wa:hover {
+  background: #fff;
+  color: var(--pink-neon);
+}
+.modal-footer {
+  text-align: center;
+  font-size: 0.6rem;
+  color: #555;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+/* ================= JS ANIMATIONS CLASSES ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .hero {
+    padding-top: 100px;
+    text-align: center;
+  }
+  .hero p {
+    margin: 0 auto 40px auto;
+  }
+  .nav-links {
+    display: none;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
