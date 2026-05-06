@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HARDWARE PIECE | Elite PC Tuning</title>
+    <title>HARDWARE PIECE</title>
+    <!-- Favicon-->
     <link rel="icon" href="icono.png" type="image/png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Roboto+Mono:wght@400;700&display=swap"
@@ -12,27 +13,55 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- PANTALLA DE BIENVENIDA (PRELOADER) -->
+    <div id="preloader">
+      <div class="loader-text mono">HARDWARE<span class="highlight">PIECE</span></div>
+      <div class="loader-bar"></div>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
       <div class="logo">HARDWARE<span class="highlight"> PIECE</span></div>
+      <!-- Botón de Menú Hamburguesa para Móviles -->
+      <button
+        class="mobile-menu-toggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        onclick="toggleMobileMenu()"
+      >
+        ☰
+      </button>
+
       <ul class="nav-links">
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#resultados">Resultados</a></li>
         <li><a href="#planes">Planes</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <!-- En móviles, el botón de reserva se mueve adentro del menú desplegable -->
+        <li class="mobile-only-btn">
+          <button class="btn btn-reservar w-100" onclick="openModal()">
+            RESERVAR TURNO
+          </button>
+        </li>
       </ul>
-      <button class="btn btn-reservar" onclick="openModal()">
+      <!-- Botón de reserva visible solo en Desktop -->
+      <button class="btn btn-reservar desktop-only-btn" onclick="openModal()">
         RESERVAR TURNO
       </button>
     </nav>
 
-    <!-- HERO CON ANIMACIÓN 3D -->
+    <!-- HERO CON ANIMACIÓN 3D OPTIMIZADA -->
     <header class="hero reveal active">
-      <!-- Efectos de fondo futuristas -->
-      <div class="cyber-grid"></div>
+      <div class="cyber-grid-wrapper">
+        <div class="cyber-grid"></div>
+      </div>
+      <div class="grid-fade"></div>
       <div class="grid-glow"></div>
 
-      <!-- Contenido principal -->
+      <!-- Partículas tranquilas -->
+      <div class="particles particles-1"></div>
+      <div class="particles particles-2"></div>
+
       <div class="hero-content">
         <h1>
           El Hardware no<br />es tu límite. <br /><span class="highlight"
@@ -85,7 +114,7 @@
           </div>
         </div>
         <div class="step-card border-glow-pink">
-          <div class="step-num mono highlight">03</div>
+          <div class="step-num mono">03</div>
           <h3>SENTÍ LA DIFERENCIA</h3>
           <p>
             Tu PC finalmente rinde como debería. 1% Lows estables, registro de
@@ -113,7 +142,7 @@
             REDUCCIÓN DE LATENCIA
           </div>
         </div>
-        <div class="stat-box" style="border-color: var(--pink-neon)">
+        <div class="stat-box">
           <div class="stat-number" style="font-size: 4rem">+72%</div>
           <div
             class="mono"
@@ -152,12 +181,7 @@
           </ul>
           <button
             class="btn w-100"
-            style="
-              margin-top: 20px;
-              width: 100%;
-              border-color: #555;
-              color: #aaa;
-            "
+            style="margin-top: 20px; border-color: #555; color: #aaa"
             onclick="openModal('Essential')"
           >
             SELECCIONAR ESSENTIAL
@@ -181,7 +205,7 @@
           </ul>
           <button
             class="btn w-100"
-            style="margin-top: 20px; width: 100%; border-color: #fff"
+            style="margin-top: 20px; border-color: #fff"
             onclick="openModal('Performance')"
           >
             SELECCIONAR PRO
@@ -205,7 +229,7 @@
           </ul>
           <button
             class="btn w-100"
-            style="margin-top: 20px; width: 100%"
+            style="margin-top: 20px"
             onclick="openModal('Elite')"
           >
             SELECCIONAR ELITE
@@ -365,6 +389,15 @@
               rows="3"
               placeholder="Ej: Ryzen 7 5700X3D, RTX 4070, juego Valorant..."
             ></textarea>
+          </div>
+
+          <!-- CHECKBOX TÉRMINOS Y CONDICIONES -->
+          <div class="input-group full-width terms-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="waTerms" required>
+              <span class="checkmark"></span>
+              <span class="terms-text">He leído y acepto los <a href="#" onclick="alert('Al contratar el servicio, asumo la responsabilidad por las modificaciones en mi hardware/software. Hardware Piece opera dentro de márgenes seguros.')" class="highlight">Términos de Servicio</a>.</span>
+            </label>
           </div>
 
           <button
