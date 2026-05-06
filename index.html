@@ -15,7 +15,9 @@
   <body>
     <!-- PANTALLA DE BIENVENIDA (PRELOADER) -->
     <div id="preloader">
-      <div class="loader-text mono">HARDWARE<span class="highlight">PIECE</span></div>
+      <div class="loader-text mono">
+        HARDWARE<span class="highlight">PIECE</span>
+      </div>
       <div class="loader-bar"></div>
     </div>
 
@@ -394,9 +396,20 @@
           <!-- CHECKBOX TÉRMINOS Y CONDICIONES -->
           <div class="input-group full-width terms-group">
             <label class="checkbox-container">
-              <input type="checkbox" id="waTerms" required>
+              <input type="checkbox" id="waTerms" required />
               <span class="checkmark"></span>
-              <span class="terms-text">He leído y acepto los <a href="#" onclick="alert('Al contratar el servicio, asumo la responsabilidad por las modificaciones en mi hardware/software. Hardware Piece opera dentro de márgenes seguros.')" class="highlight">Términos de Servicio</a>.</span>
+              <span class="terms-text"
+                >He leído y acepto los
+                <a
+                  href="#"
+                  onclick="
+                    mostrarTerminos();
+                    return false;
+                  "
+                  class="highlight"
+                  >Términos de Servicio</a
+                >.</span
+              >
             </label>
           </div>
 

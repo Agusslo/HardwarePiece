@@ -2,23 +2,26 @@
 // PANTALLA DE BIENVENIDA (PRELOADER)
 // ==========================================
 window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.body.classList.add("loaded");
-    }, 800);
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+  }, 800);
 });
 
 // ==========================================
 // ANIMACIONES AL HACER SCROLL (REVEAL OPTIMIZADO)
 // ==========================================
 const revealElements = document.querySelectorAll(".reveal");
-const revealObserver = new IntersectionObserver((entries, observer) => {
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
-        observer.unobserve(entry.target); 
+        observer.unobserve(entry.target);
       }
     });
-}, { threshold: 0.15 });
+  },
+  { threshold: 0.15 },
+);
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
@@ -36,7 +39,7 @@ function toggleMobileMenu() {
   mobileMenuToggle.textContent = isExpanded ? "✕" : "☰";
 }
 
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     navLinksContainer.classList.remove("active");
     mobileMenuToggle.setAttribute("aria-expanded", "false");
@@ -94,6 +97,15 @@ modal.addEventListener("click", (e) => {
 });
 
 // ==========================================
+// MOSTRAR TÉRMINOS DE SERVICIO
+// ==========================================
+function mostrarTerminos() {
+  alert(
+    "Al contratar el servicio, asumo la responsabilidad por las modificaciones en mi hardware/software. Hardware Piece opera dentro de márgenes seguros.",
+  );
+}
+
+// ==========================================
 // LÓGICA DE ENVÍO A WHATSAPP
 // ==========================================
 function enviarWhatsApp() {
@@ -104,13 +116,13 @@ function enviarWhatsApp() {
   const horario = document.getElementById("waHorario").value;
   const pago = document.getElementById("waPago").value;
   const specs = document.getElementById("waSpecs").value.trim();
-  const terms = document.getElementById("waTerms").checked; 
+  const terms = document.getElementById("waTerms").checked;
 
   if (!nombre || !horario) {
     alert("Por favor, ingresá tu nombre y elegí un horario de sesión.");
     return;
   }
-  
+
   if (!terms) {
     alert("Debes aceptar los Términos de Servicio para continuar.");
     return;
@@ -137,31 +149,31 @@ function enviarWhatsApp() {
 // ==========================================
 // EFECTO 3D TILT EN TARJETAS DE PRECIOS
 // ==========================================
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
 
-cards.forEach(card => {
-    if (window.innerWidth <= 768) return;
+cards.forEach((card) => {
+  if (window.innerWidth <= 768) return;
 
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left; 
-        const y = e.clientY - rect.top;  
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = ((y - centerY) / centerY) * -10; 
-        const rotateY = ((x - centerX) / centerX) * 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-    });
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-        card.style.transition = 'transform 0.5s ease'; 
-    });
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-    card.addEventListener('mouseenter', () => {
-        card.style.transition = 'none';
-    });
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    card.style.transition = "transform 0.5s ease";
+  });
+
+  card.addEventListener("mouseenter", () => {
+    card.style.transition = "none";
+  });
 });
